@@ -1,0 +1,69 @@
+*{margin: 0; padding: 0; box-sizing: border-box; outline: none;}
+.principal{
+    display: grid;
+    grid-template-columns:75% 25%; /*estou informando que quero 2 colunas*/
+    grid-template-areas: 'cabecalho formulario'
+                          'principal formulario'
+                          'rodape formulario';
+    height: 100vh; /*vh(view port height) significa o quanto o conteudo vai ocupar da tela em relação a porcentagem total da respectiva tela*/
+    font-family: arial; 
+    color: #ffffff;
+}
+
+/*CABEÇALHO*/
+header{grid-area: cabecalho;}
+.logo{display: flex;  align-items: center; padding: 10px 30px;}
+.logo img{width: 150px}
+.logo h1{font-family: verdana; color: #274083;}
+    
+/*PRINCIPAL*/
+main{grid-area: principal; background: linear-gradient(to right, #48a0df, #274083); display: flex; align-items: center; padding: 2% 0 2% 50px; line-height: 1cm;}
+main figure img{width: 100%;}
+main figure{width: 200px; margin-right: 20%;}
+main h1{font-size: 40px; width: 70%; margin-bottom: 30px; line-height: 1.5cm;}
+main h3{width: 80%;}
+
+/*FORMULÁRIO*/
+aside{grid-area: formulario; background-color: #274083; padding-top: 30px; text-align: center;}
+aside form{width: 90%; padding-top: 30px; margin: 0 auto; display: flex; flex-direction: column; row-gap: 20px;}
+aside input, select{width: 100%; padding: 15px; font-size: 16px; margin-bottom: 10px; border: none;}
+aside input[type=submit]{background-color: #11dd2c; font-weight: bold; padding: 20px 0; cursor:pointer; transition: all 0.25s linear;}
+::placeholder{color: black;}
+
+/*EFEITOS*/
+form :where(input, select):focus{outline: 3.5px solid white;}
+form input[type=submit]:hover{box-shadow: 0px 3.5px 7.35px whitesmoke; transition: all 0.25s linear;}
+
+/*RODAPÉ*/
+footer{grid-area: rodape; background-color: #cccccc; color: #274083; padding: 30px; display: flex;}
+footer section{margin: 0 20px;}
+footer .rodape-titulo{margin-bottom: 20px;}
+footer .rodape-conteudo{line-height: 0.7cm;}
+
+/*RESPONSIVIDADE*/
+@media screen and (max-width: 1200px){
+    .principal{
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        'cabecalho'
+        'principal'
+        'rodape'
+        'formulario';
+    }
+
+    main{height: 50vh;}
+    main h1, main h3{width: 100%;}
+    main figure{margin: 0 5%;}
+    aside input [type = submit]{font-size: 20px;}
+
+}
+
+@media screen and (max-width: 750px){
+    main figure{display: none;}
+    footer{flex-direction: column;}
+    footer section:nth-child(2){margin-top: 20px;}
+    main figure{display: none;}
+    main{background: url(../imagens/livro2.png); background-color: #48a0df; background-size: 200px; background-repeat: no-repeat; background-position: center; background-blend-mode:multiply;}
+    main h1, main h3{text-shadow: 2px 1px 2px #000000;}
+
+}
